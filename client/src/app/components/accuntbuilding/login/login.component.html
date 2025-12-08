@@ -1,0 +1,51 @@
+<div class="page-container">
+    <div class="form-wrapper">
+        <div class="header">
+            <i class="bi bi-building"></i>
+            <img src="icon-heder.svg" alt="">
+            <span class="title">Your Home</span>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>Login as Building Manager</h2>
+            </div>
+
+            <!-- <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-grid"> -->
+            <form class="form-grid">
+                <div class="grid two-cols">
+                    <div>
+                        <label>Phone Number</label>
+                        <input type="tel" [formControl]="PhoneNumberCtrl" formControlName="phoneNumber" placeholder="+1 (555) 000-0000" />
+                    </div>
+
+                    <div>
+                        <label>Password</label>
+                        <input type="password" [formControl]="PasswordCtrl" formControlName="password"
+                            placeholder="••••••••" />
+                    </div>
+                </div>
+
+                <!-- <button type="submit" [disabled]="isLoading" class="submit-btn">
+                    {{ isLoading ? 'Creating account...' : 'Create Manager Account' }}
+                </button> -->
+                <button 
+                type="submit" (click)="login()" class="submit-btn">
+                Login Manager Account
+            </button>
+        </form>
+        <!-- routerLink="/homebui" -->
+        
+            <div class="footer">
+                <p>
+                    Already have an account?
+                    <a routerLink="/login">Register</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="back-home">
+            <a routerLink="/">← Back to home</a>
+        </div>
+    </div>
+</div>

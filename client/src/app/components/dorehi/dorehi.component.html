@@ -1,0 +1,67 @@
+<div class="page">
+  <div class="container">
+    <div class="header">
+      <h1>Welcome to Your Home</h1>
+      <p>Choose how you'd like to continue</p>
+    </div>
+
+    <div class="cards">
+      <!-- Building Manager -->
+      <a routerLink="/account/buildingregister" class="card">
+        <div class="card-image">
+          <img
+            src="modern-residential-building-exterior-with-green-la.jpg"
+            alt="Building Manager"
+            loading="lazy"
+          />
+          <div class="overlay"></div>
+          <div class="card-title">
+            <i class="bi bi-building"></i>
+            <h2>Building Manager</h2>
+            <p>Manage your properties and connect with maintenance professionals</p>
+          </div>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>Track building status updates</li>
+            <li>Find qualified technicians</li>
+            <li>Manage maintenance requests</li>
+          </ul>
+          <div class="btn">Continue as Manager</div>
+        </div>
+      </a>
+
+      <!-- Technician -->
+      <a routerLink="/account/tecregister" class="card">
+        <div class="card-image">
+          <img
+            src="skilled-carpenter-working-on-cabinet-installation-.jpg"
+            alt="Technician"
+            loading="lazy"
+          />
+          <div class="overlay"></div>
+          <div class="card-title">
+            <i class="bi bi-wrench"></i>
+            <h2>Technician</h2>
+            <p>Showcase your skills and connect with building managers</p>
+          </div>
+        </div>
+        <div class="card-content">
+          <ul>
+            <li>Post service advertisements</li>
+            <li>Reach more clients</li>
+            <li>Grow your business</li>
+          </ul>
+          <div class="btn">Continue as Technician</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="footer">
+      <p>
+        Already have an account?
+        <a routerLink="/login">Sign in here</a>
+      </p>
+    </div>
+  </div>
+</div>

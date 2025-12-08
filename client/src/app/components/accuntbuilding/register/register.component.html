@@ -1,0 +1,97 @@
+<div class="page-container">
+    <div class="form-wrapper">
+        <div class="header">
+            <i class="bi bi-building"></i>
+            <img src="icon-heder.svg" alt="">
+            <span class="title">Your Home</span>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>Register as Building Manager</h2>
+                <p>Create your account to start managing your buildings</p>
+            </div>
+
+            <!-- <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-grid"> -->
+            <form class="form-grid">
+                <div class="grid two-cols">
+                    <div>
+                        <label>First Name</label>
+                        <input type="text"  [formControl]="FirstNameCtrl" formControlName="firstName" placeholder="John" />
+                    </div>
+                    <div>
+                        <label>Last Name</label>
+                        <input type="text" [formControl]="LastNameCtrl" formControlName="lastName" placeholder="Doe" />
+                    </div>
+                </div>
+
+                <div class="grid two-cols">
+                    <div>
+                        <label>Phone Number</label>
+                        <input type="tel" [formControl]="PhoneNumberCtrl" formControlName="phoneNumber" placeholder="+1 (555) 000-0000" />
+                    </div>
+                </div>
+
+                <div class="grid two-cols">
+                    <div>
+                        <label>City</label>
+                        <input type="text" [formControl]="CityCtrl" formControlName="city" placeholder="New York" />
+                    </div>
+                    <div>
+                        <label>Country</label>
+                        <input type="text" [formControl]="CountryCtrl" formControlName="country" placeholder="United States" />
+                    </div>
+                </div>
+
+                <div class="grid three-cols">
+                    <div>
+                        <label>Plaque</label>
+                        <input type="text" [formControl]="PlaqueCtrl" formControlName="plaque" placeholder="123" />
+                    </div>
+                    <div>
+                        <label>Floor</label>
+                        <input type="text" [formControl]="FloorCtrl" formControlName="floor" placeholder="5" />
+                    </div>
+                    <div>
+                        <label>Unit</label>
+                        <input type="text" [formControl]="UnitCtrl" formControlName="unit" placeholder="A" />
+                    </div>
+                    <div>
+                        <label>Post Code</label>
+                        <input type="text" [formControl]="PostCodeCtrl" formControlName="postCode" placeholder="10001" />
+                    </div>
+                </div>
+
+
+                <div class="grid two-cols">
+                    <div>
+                        <label>Password</label>
+                        <input type="password" [formControl]="PasswordCtrl" formControlName="password" placeholder="••••••••" />
+                    </div>
+                    <div>
+                        <label>Confirm Password</label>
+                        <input type="password" [formControl]="ConfirmPasswordCtrl" formControlName="confirmPassword" placeholder="••••••••" />
+                    </div>
+                </div>
+
+                <!-- <button type="submit" [disabled]="isLoading" class="submit-btn">
+                    {{ isLoading ? 'Creating account...' : 'Create Manager Account' }}
+                </button> -->
+                <button (click)="register()" type="submit" class="submit-btn">
+                    Create Manager Account
+                </button>
+            </form>
+
+            <div class="footer">
+                <p>
+                    Already have an account?
+                    <a routerLink="/account/loginbuilding">Sign in</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="back-home">
+            <a routerLink="/">← Back to home</a>
+        </div>
+    </div>
+</div>

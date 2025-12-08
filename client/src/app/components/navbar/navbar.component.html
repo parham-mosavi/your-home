@@ -1,0 +1,111 @@
+<header class="header">
+    <div class="header-container">
+        <!-- Logo -->
+        <a routerLink="/" class="logo">
+            <!-- <span class="logo-icon">🏢</span> -->
+            <img src="icon-heder.svg" alt="" class="logo-icon">
+            <span class="logo-text">Your Home</span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="nav-desktop">
+            @if (accountServis.loggedInUserSig(); as user) {
+            <a routerLink="/store" class="nav-link">Store</a>
+            <a routerLink="/homebui" class="nav-link">home</a>
+            <a href="#how-it-works" class="nav-link">How It Works</a>
+            <button mat-mini-fab [mat-menu-trigger-for]="appMenu" class="bmenu">
+                <samp>{{user.firstName[0] | titlecase}}</samp>
+            </button>
+            <mat-menu #appMenu>
+                <div class="user-info">
+                    <div class="profile-info">
+                        <img src="home_work_59dp_75FB4C_FILL0_wght400_GRAD0_opsz48.svg">
+                    </div>
+                    <div>
+                        <span>{{user.firstName}}</span>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+
+                <mat-list>
+                    <mat-list-item>
+                        <div class="menu-items">
+                            <mat-icon>edit_note</mat-icon>
+                            Edit profile
+                        </div>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <div class="menu-items">
+                            <mat-icon>flaky</mat-icon>
+                            All members
+                        </div>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <div class="menu-items">
+                            <mat-icon>assignment_returned</mat-icon>
+                            Messages
+                        </div>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <div class="logout">
+                        <button (click)="logoutm()" mat-raised-button color="warn">Logout</button>
+                    </div>
+                </mat-list>
+
+            </mat-menu>
+            }
+            @else if (accounttcServis.loggedIntecSig()) {
+            <a routerLink="/store" class="nav-link">Store</a>
+            <a routerLink="/hometec" class="nav-link">home</a>
+            <a href="#how-it-works" class="nav-link">How It Works</a>
+            <button mat-mini-fab [mat-menu-trigger-for]="appMenu" class="bmenu">
+                <samp>T</samp>
+            </button>
+            <mat-menu #appMenu>
+                <div class="user-info">
+                    <div class="profile-info">
+                        <img src="home_work_59dp_75FB4C_FILL0_wght400_GRAD0_opsz48.svg">
+                    </div>
+                    <div>
+                        <span></span>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+
+                <mat-list>
+                    <mat-list-item>
+                        <div class="menu-items">
+                            <mat-icon>edit_note</mat-icon>
+                            Edit profile
+                        </div>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <div class="menu-items">
+                            <mat-icon>flaky</mat-icon>
+                            All members
+                        </div>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <div class="menu-items">
+                            <mat-icon>assignment_returned</mat-icon>
+                            Messages
+                        </div>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <div class="logout">
+                        <button (click)="logoutt()" mat-raised-button color="warn">Logout</button>
+                    </div>
+                </mat-list>
+
+            </mat-menu>
+            }
+            @else {
+            <a routerLink="/store" class="nav-link">Store</a>
+            <!-- <a href="#features" class="nav-link" >Features</a> -->
+            <a href="#how-it-works" class="nav-link">How It Works</a>
+            <a routerLink="dorahi" class="nav-link">Register</a>
+            <a routerLink="dorahi" class="nav-link">Login</a>
+            }
+        </nav>
+    </div>
+</header>

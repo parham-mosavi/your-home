@@ -1,0 +1,87 @@
+<div class="page-container">
+    <div class="form-wrapper">
+        <div class="header">
+            <img src="icon-heder.svg" alt="Building Icon" class="icon" />
+            <span class="title">Your Home</span>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>Register as Technician</h2>
+                <p>Create your profile to start offering your services</p>
+            </div>
+
+            <form class="form-grid">
+                <div class="grid two-cols">
+                    <div class="field">
+                        <label for="fullName">First Name</label>
+                        <input [formControl]="FirstNameCtrl" id="fullName" name="fullName" required
+                            placeholder="Jane Smith" />
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Last Name</label>
+                        <input [formControl]="LastNameCtrl" id="email" name="email" type="email" required
+                            placeholder="jane@example.com" />
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="phone">Phone Number</label>
+                    <input [formControl]="PhoneNumberCtrl" id="phone" name="phone" type="tel" required
+                        placeholder="+1 (555) 000-0000" />
+                </div>
+
+                <div class="grid two-cols">
+                    <div class="field">
+                        <label for="specialty">password</label>
+                        <input [formControl]="PasswordCtrl" id="specialty" name="specialty" required
+                            placeholder="Elevator Repair, Carpentry, etc." />
+                    </div>
+
+                    <div class="field">
+                        <label for="experience">confirm Password</label>
+                        <input [formControl]="ConfirmPasswordCtrl" id="experience" name="experience"
+                            required placeholder="5" />
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="description">city</label>
+                    <input [formControl]="CityCtrl" id="experience" required required placeholder="karaj"/>
+                </div>
+
+                <div class="grid two-cols">
+                    <div class="field">
+                        <label for="password">Country</label>
+                        <input [formControl]="CountryCtrl" id="password" name="password" required placeholder="••••••••" />
+                    </div>
+
+                    <div class="field">
+                        <label for="confirmPassword">Technique</label>
+                        <input [formControl]="TechniqueCtrl" id="confirmPassword" name="confirmPassword" required
+                            placeholder="••••••••" />
+                    </div>
+                </div>
+
+                <!-- <button type="submit" [disabled]="isLoading" class="submit-btn">
+                    {{ isLoading ? 'Creating account...' : 'Create Technician Account' }}
+                </button> -->
+                <button (click)="register()" class="submit-btn">
+                    Register
+                </button>
+            </form>
+
+            <div class="footer">
+                <p>
+                    Already have an account?
+                    <a routerLink="account/logintec">Sign in</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="back-link">
+            <a routerLink="/">← Back to home</a>
+        </div>
+    </div>
+</div>

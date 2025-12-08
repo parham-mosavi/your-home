@@ -1,0 +1,147 @@
+/* صفحه اصلی */
+.page {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #b0f9d7, #ffffff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+}
+
+/* کانتینر اصلی */
+.container {
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+}
+
+/* هدر */
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+.header p {
+  color: #4b5563;
+  font-size: 1.2rem;
+}
+
+/* کارت‌ها */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.card {
+  text-decoration: none;
+  border: 2px solid #e5e7eb;
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: 0.3s;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+.card:hover {
+  border-color: #34d399;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* تصویر کارت */
+.card-image {
+  position: relative;
+  height: 260px;
+}
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+}
+.card-title {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  color: #fff;
+  text-align: left;
+}
+.card-title i {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.card-title h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.card-title p {
+  color: #bbf7d0;
+  margin-top: 0.25rem;
+}
+
+/* محتوا */
+.card-content {
+  padding: 1.5rem;
+}
+.card-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.card-content li {
+  display: flex;
+  align-items: center;
+  color: #4b5563;
+  margin-bottom: 0.5rem;
+}
+.card-content li::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34d399;
+  margin-right: 8px;
+}
+
+/* دکمه */
+.btn {
+  margin-top: 1rem;
+  background-color: #34d399;
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+}
+.btn:hover {
+  background-color: #10b981;
+}
+
+/* فوتر */
+.footer {
+  margin-top: 2rem;
+}
+.footer p {
+  color: #4b5563;
+}
+.footer a {
+  color: #10b981;
+  font-weight: 600;
+  text-decoration: none;
+}
+.footer a:hover {
+  text-decoration: underline;
+}
