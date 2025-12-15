@@ -6,6 +6,7 @@ export interface loggedinm {
     country: string;
     plaque: string;
     postCode: string;
+    token: string;
     floor: number;
     unit: number;
 }

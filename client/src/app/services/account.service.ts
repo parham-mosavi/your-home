@@ -18,7 +18,7 @@ export class AccountService {
 
   register(userInput: buildingm): Observable<loggedinm | null> {
     let respons$: Observable<loggedinm | null> =
-      this.http.post<loggedinm>(this._baseApiUrl + 'bmanager/register', userInput)
+      this.http.post<loggedinm>(this._baseApiUrl + 'bmaneger/register', userInput)
         .pipe(map(res => {
           if (res) {
             this.setCurrentUser(res);
@@ -33,7 +33,7 @@ export class AccountService {
 
   login(userInput: Login): Observable<loggedinm | null> {
     let respons$: Observable<loggedinm | null> =
-      this.http.post<loggedinm>(this._baseApiUrl + 'bmanager/login', userInput)
+      this.http.post<loggedinm>(this._baseApiUrl + 'bmaneger/login', userInput)
         .pipe(map(res => {
           if (res) {
             this.setCurrentUser(res);
