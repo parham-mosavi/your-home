@@ -13,6 +13,7 @@ import { RegistertecComponent } from './components/accunttec/registertec/registe
 import { LogintecComponent } from './components/accunttec/logintec/logintec.component';
 import { DorehiComponent } from './components/dorehi/dorehi.component';
 import { authLoggedInGuard } from './guards/auth-logged-in.guard';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -27,7 +28,7 @@ export const routes: Routes = [
     { path: 'members/member', component: MembersComponent },
     { path: 'dorahi', component: DorehiComponent },
     { path: 'shop', component: ShopComponent },
-    { path: 'hometec', component: TechomeComponent },
-    { path: 'homebui', component: BuihomeComponent },
+    { path: 'hometec', component: TechomeComponent, canActivate: [authGuard]},
+    { path: 'homebui', component: BuihomeComponent, canActivate: [authGuard] },
     { path: '**', component: NotfoundComponent },
 ];
