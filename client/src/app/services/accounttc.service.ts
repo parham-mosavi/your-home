@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { loggedint } from '../models/loggedint-model';
 import { map, Observable } from 'rxjs';
 import { loggedinm } from '../models/loggedinm-model';
 import { technician } from '../models/technician.model';
 import { Login } from '../models/login-model';
 import { Router } from '@angular/router';
+import { platformBrowser } from '@angular/platform-browser';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +15,7 @@ import { Router } from '@angular/router';
 export class AccounttcService {
   http = inject(HttpClient);
   router = inject(Router);
+  platformId = inject(PLATFORM_ID);
   loggedIntecSig = signal<loggedint | null>(null);
 
   private readonly _baseApiUrl: string = 'http://localhost:5000/api/'
@@ -63,7 +66,8 @@ export class AccounttcService {
 
   setCurrentUser(userInput: loggedint): void {
     this.loggedIntecSig.set(userInput);
-
-    localStorage.setItem('loggedInTec', JSON.stringify(userInput));
+    
+    if (isPlatformBrowser(this.platformId))
+      localStorage.setItem('loggedInTec', JSON.stringify(userInput));
   }
 }

@@ -1,1 +1,90 @@
-<p>members works!</p>
+<div class="container">
+  <p>member-list works!</p>
+  <div class="members-container">
+    @for (member of members; track $index) {
+    <mat-card class="card">
+      <div class="card-image-wrapper">
+        <img src="images/100.jpg" alt="{{member.city}}">
+        <ul class="user-icon">
+          <li>
+            <button mat-mini-fab>
+              <mat-icon color="primary">person_add</mat-icon>
+            </button>
+          </li>
+          <li>
+            <button mat-mini-fab>
+              <mat-icon color="warn">favorite</mat-icon>
+            </button>
+          </li>
+          <li>
+            <button mat-mini-fab>
+              <mat-icon color="primary">chat</mat-icon>
+            </button>
+          </li>
+        </ul>
+      </div>
+      <mat-card-header>
+        <div class="title">
+          <mat-icon>man</mat-icon>
+        </div>
+        <mat-card-subtitle>{{member.phoneNumber}}</mat-card-subtitle>
+        <!-- <mat-card-subtitle> Age :{{member.age}}</mat-card-subtitle> -->
+      </mat-card-header>
+    </mat-card>
+    }
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <button (click)="getAll()" >dsfdsf</button> -->
+
+
+
+
+
+
+
+
+
+
+<!-- <mat-card class="example-card" appearance="outlined">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Shiba Inu</mat-card-title>
+    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="https://material.angular.dev/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>
+      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+      bred for hunting.
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button matButton>LIKE</button>
+    <button matButton>SHARE</button>
+  </mat-card-actions>
+</mat-card> -->

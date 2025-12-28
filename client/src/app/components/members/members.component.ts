@@ -1,11 +1,14 @@
-import { Component, inject } from '@angular/core';
-import { AccounttcService } from '../../services/accounttc.service';
+import { Component, inject, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { AccounttcService } from '../../services/accounttc.service';
 import { loggedint } from '../../models/loggedint-model';
 
 @Component({
   selector: 'app-members',
-  imports: [],
+  imports: [MatButtonModule,  MatCardModule, MatIconModule],
   templateUrl: './members.component.html',
   styleUrl: './members.component.scss'
 })

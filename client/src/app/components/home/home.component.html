@@ -1,5 +1,5 @@
 <div class="page-wrapper">
-  
+
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-container">
@@ -10,10 +10,19 @@
           trusted professionals all in one place.
         </p>
 
+        @if (accountServis.loggedInUserSig()) {
+        <!-- <div class="hero-buttons">
+          <a routerLink="account/buildingregister" class="btn btn-primary">Register as Manager</a>
+          <a routerLink="account/tecregister" class="btn btn-outline">Register as Technician</a>
+        </div> -->
+        }
+
+        @else {
         <div class="hero-buttons">
           <a routerLink="account/buildingregister" class="btn btn-primary">Register as Manager</a>
           <a routerLink="account/tecregister" class="btn btn-outline">Register as Technician</a>
         </div>
+        }
       </div>
 
       <div class="hero-images">
@@ -110,7 +119,10 @@
     </div>
   </section>
 
+  @if (accountServis.loggedInUserSig()) {}
   <!-- CTA Section -->
+
+  @else {
   <section class="cta">
     <h2>Ready to Get Started?</h2>
     <p>Join hundreds of building managers and technicians already using Your Home</p>
@@ -119,7 +131,8 @@
       <a routerLink="/register/technician" class="btn btn-outline">Register as Technician</a>
     </div>
   </section>
-
+  }
+  
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">

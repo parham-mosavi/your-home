@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace api.Controllers;
 
-[Authorize]
+// [Authorize]
 public class TecMemberController(ITecMemberRepository tecMemberRepository) : BaseApiController
 {
     [HttpGet("getall-tec")]

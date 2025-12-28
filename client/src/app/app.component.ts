@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -23,18 +23,21 @@ import { AccounttcService } from './services/accounttc.service';
 export class AppComponent implements OnInit {
   accountService = inject(AccountService);
   accounttcServis = inject(AccounttcService);
+  platformId = inject(PLATFORM_ID);
 
   ngOnInit(): void {
-    let loggedinUserstr: string | null = localStorage.getItem('loggedIn');
-
-    if (loggedinUserstr) {
-      this.accountService.setCurrentUser(JSON.parse(loggedinUserstr))
-    }
-
-    let tecUser: string | null = localStorage.getItem('loggedInTec');
-
-    if (tecUser) {
-      this.accounttcServis.setCurrentUser(JSON.parse(tecUser))
+    if (isPlatformBrowser(this.platformId)) {
+      let loggedinUserstr: string | null = localStorage.getItem('loggedIn');
+      
+      if (loggedinUserstr) {
+        this.accountService.setCurrentUser(JSON.parse(loggedinUserstr))
+      }
+      
+      let tecUser: string | null = localStorage.getItem('loggedInTec');
+      
+      if (tecUser) {
+        this.accounttcServis.setCurrentUser(JSON.parse(tecUser))
+      }
     }
   }
 }
