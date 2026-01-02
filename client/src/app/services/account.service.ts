@@ -22,11 +22,12 @@ export class AccountService {
         .pipe(map(res => {
           if (res) {
             this.setCurrentUser(res);
+            
+            this.router.navigateByUrl('/homebui');
           }
           return null
         }))
 
-    this.router.navigateByUrl('/homebui');
 
     return respons$;
   }
@@ -37,13 +38,14 @@ export class AccountService {
         .pipe(map(res => {
           if (res) {
             this.setCurrentUser(res);
+
+            this.router.navigateByUrl('/homebui');
           }
 
           return null
 
         }))
 
-    this.router.navigateByUrl('/homebui');
     
     return respons$;
   }

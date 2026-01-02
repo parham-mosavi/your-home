@@ -13,11 +13,20 @@ public class TecMemberRepository : ITecMemberRepository
 
     #endregion
 
-    public async Task<List<Technician>> GetAllTec(CancellationToken cancellationToken)
+    public async Task<List<Technician>> GetAllTecAsync(CancellationToken cancellationToken)
     {
         List<Technician> user = await _collection.Find(new BsonDocument()).ToListAsync(cancellationToken);
 
         return user;
+    }
+
+
+    public async Task<List<Technician>> GetByTechniqueAsync(string Technique, CancellationToken cancellationToken)
+    {
+        List<Technician> technicians = await _collection
+            .Find<Technician>(doc => doc.Technique == Technique).ToListAsync(cancellationToken);
+
+        return technicians;
     }
 }
         // List<AppUser> appUsers = await _collection.Find(new BsonDocument()).ToListAsync(cancellationToken);

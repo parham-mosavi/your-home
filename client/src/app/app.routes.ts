@@ -28,7 +28,7 @@ export const routes: Routes = [
     { path: 'members/member', component: MembersComponent },
     { path: 'dorahi', component: DorehiComponent },
     { path: 'shop', component: ShopComponent },
+    { path: 'homebui', component: BuihomeComponent, canActivate: [authGuard]},
     { path: 'hometec', component: TechomeComponent, canActivate: [authGuard]},
-    { path: 'homebui', component: BuihomeComponent, canActivate: [authGuard] },
     { path: '**', component: NotfoundComponent },
 ];

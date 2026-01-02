@@ -8,7 +8,7 @@ public class TecMemberController(ITecMemberRepository tecMemberRepository) : Bas
     [HttpGet("getall-tec")]
     public async Task<ActionResult<List<LoggedInTecDto>>> GetAllTec(CancellationToken cancellationToken)
     {
-        List<Technician>? users = await tecMemberRepository.GetAllTec(cancellationToken);
+        List<Technician>? users = await tecMemberRepository.GetAllTecAsync(cancellationToken);
 
         if (users is null)
         {
@@ -16,6 +16,29 @@ public class TecMemberController(ITecMemberRepository tecMemberRepository) : Bas
         }
 
         List<LoggedInTecDto> loggedInTecDtos = [];
+
+        foreach (Technician user in users)
+        {
+            LoggedInTecDto loggedInTecDto =
+                Mappers.TechnicianToLoggedInTecDto(user);
+
+            loggedInTecDtos.Add(loggedInTecDto);
+        }
+        return loggedInTecDtos;
+    }
+
+    [HttpGet("gat-by-tec")]
+    public async Task<ActionResult<List<LoggedInTecDto>>> GetByTechnique(string technique, CancellationToken cancellationToken)
+    {
+        List<Technician>? users = await tecMemberRepository
+            .GetByTechniqueAsync(technique, cancellationToken);
+
+        if (users is null)
+        {
+            return NoContent();
+        }
+
+         List<LoggedInTecDto> loggedInTecDtos = [];
 
         foreach (Technician user in users)
         {

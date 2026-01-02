@@ -21,7 +21,7 @@ export const authGuard: CanActivateFn = (route, state) => {
       duration: 7000
     });
 
-    router.navigateByUrl('account/login')
+    // router.navigateByUrl('account/login')
   }
 
   return false;
