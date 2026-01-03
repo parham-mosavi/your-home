@@ -10,13 +10,15 @@ import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators 
 import { Observable } from 'rxjs';
 import { Buildingm } from '../../../models/buildingm.model';
 import { Loggedinm } from '../../../models/loggedinm-model';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [RouterModule,
+  imports: [RouterModule, MatRadioModule,
     FormsModule, ReactiveFormsModule, MatFormFieldModule,
-    MatButtonModule, MatInputModule],
+    MatButtonModule, MatInputModule, MatDatepickerModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
@@ -27,8 +29,8 @@ export class RegisterComponent {
   error: string | undefined;
 
   registerFg = this.fB.group({
-    firstNameCtrl: ['', [Validators.required]],
-    lastNameCtrl: ['', [Validators.required]],
+    firstNameCtrl: ['', [Validators.required , Validators.minLength(1), Validators.maxLength(30)]],
+    lastNameCtrl: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(30)]],
     phoneNumberCtrl: ['', [Validators.required]],
     cityCtrl: ['', [Validators.required]],
     countryCtrl: ['', [Validators.required]],
