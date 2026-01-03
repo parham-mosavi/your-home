@@ -1,4 +1,4 @@
-export interface buildingm {
+export interface Buildingm {
     firstName: string;
     lastName: string;
     phoneNumber: string;

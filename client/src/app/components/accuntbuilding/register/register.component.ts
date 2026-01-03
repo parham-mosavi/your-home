@@ -8,8 +8,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { buildingm } from '../../../models/buildingm.model';
-import { loggedinm } from '../../../models/loggedinm-model';
+import { Buildingm } from '../../../models/buildingm.model';
+import { Loggedinm } from '../../../models/loggedinm-model';
 
 @Component({
   selector: 'app-register',
@@ -23,7 +23,7 @@ import { loggedinm } from '../../../models/loggedinm-model';
 export class RegisterComponent {
   accountService = inject(AccountService);
   fB = inject(FormBuilder);
-  userResponse: loggedinm | undefined | null;
+  userResponse: Loggedinm | undefined | null;
   error: string | undefined;
 
   registerFg = this.fB.group({
@@ -85,7 +85,7 @@ export class RegisterComponent {
   }
 
   register(): void {
-    let userInput: buildingm = {
+    let userInput: Buildingm = {
       firstName: this.FirstNameCtrl.value,
       lastName: this.LastNameCtrl.value,
       phoneNumber: this.PhoneNumberCtrl.value,
@@ -99,7 +99,7 @@ export class RegisterComponent {
       unit: this.UnitCtrl.value
     }
 
-    let response$: Observable<loggedinm | null> = this.accountService.register(userInput);
+    let response$: Observable<Loggedinm | null> = this.accountService.register(userInput);
 
     response$.subscribe({
       next: (res) => {

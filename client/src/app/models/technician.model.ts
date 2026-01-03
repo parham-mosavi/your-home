@@ -1,4 +1,4 @@
-export interface technician {
+export interface TechnicianUser {
     firstName: string;
     lastName: string;
     phoneNumber: string;

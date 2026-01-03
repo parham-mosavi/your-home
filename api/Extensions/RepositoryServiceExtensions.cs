@@ -8,7 +8,7 @@ public static class RepositoryServiceExtensions
         services.AddScoped<ITecAccountRepository, TecAccountRepository>();
         services.AddScoped<ITecMemberRepository, TecMemberRepository>();
         services.AddScoped<ITecUserRepository, TecUserRepository>();
-        services.AddScoped<IBManegerRepository, BManegerRepository>();
+        services.AddScoped<IBMAccountRepository, BMAccountRepository>();
 
         services.AddScoped<ITokenService, TokenService>();
 

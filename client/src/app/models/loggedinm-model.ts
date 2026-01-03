@@ -1,4 +1,4 @@
-export interface loggedinm {
+export interface Loggedinm {
     firstName: string;
     lastName: string;
     phoneNumber: string;

@@ -11,66 +11,125 @@
                 <p>Create your profile to start offering your services</p>
             </div>
 
-            <form class="form-grid">
-                <div class="grid two-cols">
-                    <div class="field">
-                        <label for="fullName">First Name</label>
-                        <input [formControl]="FirstNameCtrl" id="fullName" name="fullName" required
-                            placeholder="Jane Smith" />
-                    </div>
+            <form [formGroup]="registerFg" class="form-grid">
 
-                    <div class="field">
-                        <label for="email">Last Name</label>
-                        <input [formControl]="LastNameCtrl" id="email" name="email" type="email" required
-                            placeholder="jane@example.com" />
-                    </div>
-                </div>
+                <mat-form-field appearance="outline">
+                    <mat-label>FirstName</mat-label>
+                    <input type="text" [formControl]="FirstNameCtrl" matInput>
+                    <mat-hint>Between 1 to 30 characters.</mat-hint>
+                    @if (FirstNameCtrl.hasError('required')) {
+                    <mat-error>This field is required.</mat-error>
+                    }
+                    @else if (FirstNameCtrl.hasError("maxlength")) {
+                    <mat-error>Min 30 characters</mat-error>
+                    }
+                </mat-form-field>
 
-                <div class="field">
-                    <label for="phone">Phone Number</label>
-                    <input [formControl]="PhoneNumberCtrl" id="phone" name="phone" type="tel" required
-                        placeholder="+1 (555) 000-0000" />
-                </div>
+                <mat-form-field appearance="outline">
+                    <mat-label>LastName</mat-label>
+                    <input type="text" [formControl]="LastNameCtrl" matInput>
+                    <mat-hint>Between 1 to 30 characters.</mat-hint>
+                    @if (LastNameCtrl.hasError('required')) {
+                    <mat-error>This field is required.</mat-error>
+                    }
+                    @else if (LastNameCtrl.hasError("maxlength")) {
+                    <mat-error>Min 30 characters</mat-error>
+                    }
+                </mat-form-field>
 
-                <div class="grid two-cols">
-                    <div class="field">
-                        <label for="specialty">password</label>
-                        <input [formControl]="PasswordCtrl" id="specialty" name="specialty" required
-                            placeholder="Elevator Repair, Carpentry, etc." />
-                    </div>
+                <mat-form-field appearance="outline">
+                    <mat-label>PhoneNumber</mat-label>
+                    <input type="text" [formControl]="PhoneNumberCtrl" matInput>
+                    <mat-hint>Between 1 to 30 characters.</mat-hint>
+                    @if (PhoneNumberCtrl.hasError('required')) {
+                    <mat-error>This field is required.</mat-error>
+                    }
+                    @else if (PhoneNumberCtrl.hasError("maxlength")) {
+                    <mat-error>Min 30 characters</mat-error>
+                    }
+                </mat-form-field>
 
-                    <div class="field">
-                        <label for="experience">confirm Password</label>
-                        <input [formControl]="ConfirmPasswordCtrl" id="experience" name="experience"
-                            required placeholder="5" />
-                    </div>
-                </div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input type="password" [formControl]="PasswordCtrl" matInput>
+                    @if (PasswordCtrl.hasError('required')) {
+                    <mat-error>This field is required.</mat-error>
+                    }
+                    @else if (PasswordCtrl.errors && PasswordCtrl.hasError('minlength')) {
+                    <mat-error>It's too short. Min: 8 is required.</mat-error>
+                    }
+                    @else if(PasswordCtrl.errors && PasswordCtrl.hasError('maxlength')) {
+                    <mat-error>It's too long. Max: 20 characters.</mat-error>
+                    }
+                </mat-form-field>
 
-                <div class="field">
-                    <label for="description">city</label>
-                    <input [formControl]="CityCtrl" id="experience" required required placeholder="karaj"/>
-                </div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Confirm Password</mat-label>
+                    <input type="password" [formControl]="ConfirmPasswordCtrl" matInput>
+                    @if (ConfirmPasswordCtrl.hasError('required')) {
+                    <mat-error>This field is required.</mat-error>
+                    }
+                    @else if (ConfirmPasswordCtrl.errors && ConfirmPasswordCtrl.hasError('minlength')) {
+                    <mat-error>It's too short. Min: {{ConfirmPasswordCtrl.errors['minlength'].requiredLength}}
+                        is
+                        required.</mat-error>
+                    }
+                    @else if(ConfirmPasswordCtrl.errors && ConfirmPasswordCtrl.hasError('maxlength')) {
+                    <mat-error>It's too long. Max: {{ConfirmPasswordCtrl.errors['maxlength'].requiredLength}}
+                        characters.</mat-error>
+                    }
+                </mat-form-field>
 
-                <div class="grid two-cols">
-                    <div class="field">
-                        <label for="password">Country</label>
-                        <input [formControl]="CountryCtrl" id="password" name="password" required placeholder="••••••••" />
-                    </div>
+                <mat-form-field appearance="outline">
+                    <mat-label>city</mat-label>
+                    <input type="text" [formControl]="CityCtrl" matInput>
+                    <mat-hint>Between 1 to 30 characters.</mat-hint>
+                    @if (CityCtrl.hasError('required')) {
+                    <mat-error>This field is required.</mat-error>
+                    }
+                    @else if (CityCtrl.hasError("maxlength")) {
+                    <mat-error>Min 30 characters</mat-error>
+                    }
+                </mat-form-field>
 
-                    <div class="field">
-                        <label for="confirmPassword">Technique</label>
-                        <input [formControl]="TechniqueCtrl" id="confirmPassword" name="confirmPassword" required
-                            placeholder="••••••••" />
-                    </div>
-                </div>
+                <mat-form-field appearance="outline">
+                    <mat-label>country</mat-label>
+                    <input type="text" [formControl]="CountryCtrl" matInput>
+                    <mat-hint>Between 1 to 30 characters.</mat-hint>
+                    @if (CountryCtrl.hasError('required')) {
+                    <mat-error>This field is required.</mat-error>
+                    }
+                    @else if (CountryCtrl.hasError("maxlength")) {
+                    <mat-error>Min 30 characters</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Technique</mat-label>
+                    <input type="text" [formControl]="TechniqueCtrl" matInput>
+                    <mat-hint>Between 1 to 30 characters.</mat-hint>
+                    @if (TechniqueCtrl.hasError('required')) {
+                    <mat-error>This field is required.</mat-error>
+                    }
+                    @else if (TechniqueCtrl.hasError("maxlength")) {
+                    <mat-error>Min 30 characters</mat-error>
+                    }
+                </mat-form-field>
+
 
                 <!-- <button type="submit" [disabled]="isLoading" class="submit-btn">
-                    {{ isLoading ? 'Creating account...' : 'Create Technician Account' }}
-                </button> -->
+                        {{ isLoading ? 'Creating account...' : 'Create Technician Account' }}
+                    </button> -->
                 <button (click)="register()" class="submit-btn">
                     Register
                 </button>
             </form>
+
+            <h1>
+                @if (passwordsNotMatch) {
+                <p>Passwords don't match!</p>
+                }
+            </h1>
 
             <div class="footer">
                 <p>

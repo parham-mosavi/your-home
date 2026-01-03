@@ -1,6 +1,6 @@
 namespace api.Controllers;
 
-public class BManegerController(IBManegerRepository bManegerRepository) : BaseApiController
+public class BMAccountController(IBMAccountRepository bMAccountRepository) : BaseApiController
 {
     [HttpPost("register")]
     public async Task<ActionResult<LoggedInManeger>> Register(BuildingManeger buildingManeger, CancellationToken cancellationToken)
@@ -10,7 +10,7 @@ public class BManegerController(IBManegerRepository bManegerRepository) : BaseAp
             return BadRequest("password do not match");
         }
 
-        LoggedInManeger? user = await bManegerRepository.RegisterAsync(buildingManeger, cancellationToken);
+        LoggedInManeger? user = await bMAccountRepository.RegisterAsync(buildingManeger, cancellationToken);
 
         if (user is null)
         {
@@ -23,7 +23,7 @@ public class BManegerController(IBManegerRepository bManegerRepository) : BaseAp
     [HttpPost("login")]
     public async Task<ActionResult<LoggedInManeger>> Login(LoginTecDto logintecdto, CancellationToken cancellationToken)
     {
-        LoggedInManeger? user = await bManegerRepository.LoginAsync(logintecdto, cancellationToken);
+        LoggedInManeger? user = await bMAccountRepository.LoginAsync(logintecdto, cancellationToken);
 
         if (user is null)
         {
@@ -32,4 +32,4 @@ public class BManegerController(IBManegerRepository bManegerRepository) : BaseAp
 
         return user;
     }
-};
+}

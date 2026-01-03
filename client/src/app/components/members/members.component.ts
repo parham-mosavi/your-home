@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { AccounttcService } from '../../services/accounttc.service';
-import { loggedint } from '../../models/loggedint-model';
+import { Loggedint } from '../../models/loggedint-model';
 
 @Component({
   selector: 'app-members',
@@ -14,7 +14,7 @@ import { loggedint } from '../../models/loggedint-model';
 })
 export class MembersComponent {
   accounttcservice = inject(AccounttcService);
-  members: loggedint[] | undefined;
+  members: Loggedint[] | undefined;
 
   ngOnInit(): void {
     this.getAll();
@@ -22,7 +22,7 @@ export class MembersComponent {
   }
 
   getAll(): void {
-    let allTec: Observable<loggedint[]> = this.accounttcservice.getalltec();
+    let allTec: Observable<Loggedint[]> = this.accounttcservice.getalltec();
 
     allTec.subscribe({
       next: (res) => {

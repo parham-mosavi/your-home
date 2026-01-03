@@ -1,6 +1,6 @@
 namespace api.Interfaces;
 
-public interface IBManegerRepository
+public interface IBMAccountRepository
 {
     public Task<LoggedInManeger?> RegisterAsync(BuildingManeger buildingManeger, CancellationToken cancellationToken);
 

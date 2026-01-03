@@ -7,10 +7,7 @@ public record Technician(
     string Technique,
     string City,
     string Country,
-    // [Length(11, 11)] 
     string PhoneNumber,
-    // [EmailAddress] string Email,
-    // [Length(8, 16)] 
     string Password,
     string ConfirmPassword
 );

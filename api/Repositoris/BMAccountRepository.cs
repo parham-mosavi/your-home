@@ -1,12 +1,12 @@
 namespace api.Repositoris;
 
-public class BManegerRepository : IBManegerRepository
+public class BMAccountRepository : IBMAccountRepository
 {
-    #region dependency injections
+        #region dependency injections
     private readonly IMongoCollection<BuildingManeger> _collection;
     // constructor - dependency injections
     private readonly ITokenService _tokenService;
-    public BManegerRepository(IMongoClient client, IMongoDbSettings dbSettings, ITokenService tokenService)
+    public BMAccountRepository(IMongoClient client, IMongoDbSettings dbSettings, ITokenService tokenService)
     {
         var dbName = client.GetDatabase(dbSettings.DatabaseName);
         _collection = dbName.GetCollection<BuildingManeger>("maneger");

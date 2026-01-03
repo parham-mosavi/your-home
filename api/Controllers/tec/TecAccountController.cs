@@ -3,14 +3,14 @@ namespace api.Controllers;
 public class TecAccountController(ITecAccountRepository tecAccountRepository) : BaseApiController
 {
     [HttpPost("register-tec")]
-    public async Task<ActionResult<LoggedInTecDto>> Register(Technician tecnocine, CancellationToken cancellationToken)
+    public async Task<ActionResult<LoggedInTecDto>> Register(Technician technician, CancellationToken cancellationToken)
     {
-        if (tecnocine.Password != tecnocine.ConfirmPassword)
+        if (technician.Password != technician.ConfirmPassword)
         {
             return BadRequest("password do not match");
         }
 
-        LoggedInTecDto? loggedInTecDto = await tecAccountRepository.RegisterAsync(tecnocine, cancellationToken);
+        LoggedInTecDto? loggedInTecDto = await tecAccountRepository.RegisterAsync(technician, cancellationToken);
 
         if (loggedInTecDto is null)
         {

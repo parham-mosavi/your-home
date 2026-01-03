@@ -1,7 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { buildingm } from '../models/buildingm.model';
+import { Buildingm } from '../models/buildingm.model';
 import { map, Observable } from 'rxjs';
-import { loggedinm } from '../models/loggedinm-model';
+import { Loggedinm } from '../models/loggedinm-model';
 import { HttpClient } from '@angular/common/http';
 import { Login } from '../models/login-model';
 import { Router } from '@angular/router';
@@ -12,13 +12,13 @@ import { Router } from '@angular/router';
 export class AccountService {
   http = inject(HttpClient)
   router = inject(Router);
-  loggedInUserSig = signal<loggedinm | null>(null);
+  loggedInUserSig = signal<Loggedinm | null>(null);
 
   private readonly _baseApiUrl: string = 'http://localhost:5000/api/'
 
-  register(userInput: buildingm): Observable<loggedinm | null> {
-    let respons$: Observable<loggedinm | null> =
-      this.http.post<loggedinm>(this._baseApiUrl + 'bmaneger/register', userInput)
+  register(userInput: Buildingm): Observable<Loggedinm | null> {
+    let respons$: Observable<Loggedinm | null> =
+      this.http.post<Loggedinm>(this._baseApiUrl + 'bmaneger/register', userInput)
         .pipe(map(res => {
           if (res) {
             this.setCurrentUser(res);
@@ -32,9 +32,9 @@ export class AccountService {
     return respons$;
   }
 
-  login(userInput: Login): Observable<loggedinm | null> {
-    let respons$: Observable<loggedinm | null> =
-      this.http.post<loggedinm>(this._baseApiUrl + 'bmaneger/login', userInput)
+  login(userInput: Login): Observable<Loggedinm | null> {
+    let respons$: Observable<Loggedinm | null> =
+      this.http.post<Loggedinm>(this._baseApiUrl + 'bmaneger/login', userInput)
         .pipe(map(res => {
           if (res) {
             this.setCurrentUser(res);
@@ -58,7 +58,7 @@ export class AccountService {
     this.router.navigateByUrl('/');
   }
 
-  setCurrentUser(userInput: loggedinm): void {
+  setCurrentUser(userInput: Loggedinm): void {
     this.loggedInUserSig.set(userInput);
 
     localStorage.setItem('loggedIn', JSON.stringify(userInput));
