@@ -1,5 +1,18 @@
 <div class="page-wrapper">
 
+<div class="error-container" *ngIf="showError">
+  <mat-icon class="error-icon">block</mat-icon>
+
+  <div class="error-text">
+    <strong>Registration Disabled</strong>
+    <p>Technicians are not allowed to register.</p>
+  </div>
+
+  <button mat-icon-button class="close-btn" (click)="showError = false">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-container">
@@ -132,7 +145,7 @@
     </div>
   </section>
   }
-  
+
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">

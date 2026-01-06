@@ -9,15 +9,18 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { AccounttcService } from '../../services/accounttc.service';
 import { AccountService } from '../../services/account.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [RouterModule, RouterLink, MatMenuModule, CommonModule, MatDividerModule, MatListModule,
-    MatButtonModule, MatToolbarModule, MatIconModule,],
+    MatButtonModule, MatToolbarModule, MatIconModule, MatSnackBarModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
   accountServis = inject(AccountService);
   accounttcServis = inject(AccounttcService)
+  showError = true;
 }

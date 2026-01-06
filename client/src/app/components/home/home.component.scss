@@ -6,6 +6,35 @@ features-grid feature-card .page-wrapper {
   background-color: #059669;
 }
 
+.error-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #fdecea; /* Red 50 */
+  color: #b00020; /* Error color */
+  padding: 14px;
+  border-radius: 8px;
+  border-left: 4px solid #d32f2f;
+  margin-bottom: 16px;
+}
+
+.error-icon {
+  font-size: 28px;
+  color: #d32f2f;
+}
+
+.error-text {
+  flex: 1;
+}
+
+.close-btn {
+  color: #b00020;
+}
+
+
+
+
+
 .page-wrapper {
   background-color: #c2f0e1;
 }
