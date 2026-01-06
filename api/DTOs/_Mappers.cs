@@ -9,7 +9,6 @@ public static class Mappers
         LoggedInManeger loggedInManeger = new LoggedInManeger(
             FirstName: buildingManeger.FirstName,
             LastName: buildingManeger.LastName,
-            PhoneNumber: buildingManeger.PhoneNumber,
             City: buildingManeger.City,
             Country: buildingManeger.Country,
             Plaque: buildingManeger.Plaque,
@@ -32,5 +31,24 @@ public static class Mappers
         );
 
         return loggedInTecDto;
+    }
+
+    public static BuildingManeger RegisterToBuildingManeger(RegisterDTO registerDTO)
+    {
+        BuildingManeger buildingManeger = new BuildingManeger(
+            FirstName: registerDTO.FirstName,
+            LastName: registerDTO.LastName,
+            PhoneNumber: registerDTO.PhoneNumber,
+            Password: registerDTO.Password,
+            ConfirmPassword: registerDTO.ConfirmPassword,
+            City: string.Empty,
+            Country: string.Empty,
+            Plaque: string.Empty,
+            PostCode: string.Empty,
+            Floor: 0,
+            Unit: 0
+        );
+
+        return buildingManeger;
     }
 }

@@ -3,18 +3,18 @@ namespace api.Controllers;
 public class BMAccountController(IBMAccountRepository bMAccountRepository) : BaseApiController
 {
     [HttpPost("register")]
-    public async Task<ActionResult<LoggedInManeger>> Register(BuildingManeger buildingManeger, CancellationToken cancellationToken)
+    public async Task<ActionResult<LoggedInManeger>> Register(RegisterDTO registerDTO, CancellationToken cancellationToken)
     {
-        if (buildingManeger.Password != buildingManeger.ConfirmPassword)
+        if (registerDTO.Password != registerDTO.ConfirmPassword)
         {
             return BadRequest("password do not match");
         }
 
-        LoggedInManeger? user = await bMAccountRepository.RegisterAsync(buildingManeger, cancellationToken);
+        LoggedInManeger? user = await bMAccountRepository.RegisterAsync(registerDTO, cancellationToken);
 
         if (user is null)
         {
-            return BadRequest();
+            return BadRequest("phone Number alredy token");
         }
 
         return user;

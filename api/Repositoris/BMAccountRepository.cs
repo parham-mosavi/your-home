@@ -13,15 +13,18 @@ public class BMAccountRepository : IBMAccountRepository
         _tokenService = tokenService;
     }
     #endregion
-    public async Task<LoggedInManeger?> RegisterAsync(BuildingManeger buildingManeger, CancellationToken cancellationToken)
+    public async Task<LoggedInManeger?> RegisterAsync(RegisterDTO registerDTO, CancellationToken cancellationToken)
     {
         BuildingManeger user = await _collection.Find(doc =>
-            doc.PhoneNumber == buildingManeger.PhoneNumber).FirstOrDefaultAsync(cancellationToken);
+            doc.PhoneNumber == registerDTO.PhoneNumber).FirstOrDefaultAsync(cancellationToken);
 
         if (user is not null)
         {
             return null;
         }
+
+        BuildingManeger buildingManeger = 
+            Mappers.RegisterToBuildingManeger(registerDTO);
 
         await _collection.InsertOneAsync(buildingManeger, null, cancellationToken);
 
