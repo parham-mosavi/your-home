@@ -12,6 +12,7 @@ import { Buildingm } from '../../../models/buildingm.model';
 import { Loggedinm } from '../../../models/loggedinm-model';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { RegisterBM } from '../../../models/register-bm';
 
 @Component({
   selector: 'app-register',
@@ -26,7 +27,7 @@ export class RegisterComponent {
   accountService = inject(AccountService);
   fB = inject(FormBuilder);
   userResponse: Loggedinm | undefined | null;
-  error: string | undefined;
+  passwordMatch: boolean = true ;
 
   registerFg = this.fB.group({
     firstNameCtrl: ['', [Validators.required , Validators.minLength(1), Validators.maxLength(30)]],
@@ -41,43 +42,19 @@ export class RegisterComponent {
     passwordCtrl: ['', [Validators.required]],
     confirmPasswordCtrl: ['', [Validators.required]]
   });
-
+  
   get FirstNameCtrl(): FormControl {
     return this.registerFg.get('firstNameCtrl') as FormControl;
   }
-
+  
   get LastNameCtrl(): FormControl {
     return this.registerFg.get('lastNameCtrl') as FormControl;
   }
-
+  
   get PhoneNumberCtrl(): FormControl {
     return this.registerFg.get('phoneNumberCtrl') as FormControl;
   }
-
-  get CityCtrl(): FormControl {
-    return this.registerFg.get('cityCtrl') as FormControl;
-  }
-
-  get PostCodeCtrl(): FormControl {
-    return this.registerFg.get('postCodeCtrl') as FormControl;
-  }
-
-  get CountryCtrl(): FormControl {
-    return this.registerFg.get('countryCtrl') as FormControl;
-  }
-
-  get PlaqueCtrl(): FormControl {
-    return this.registerFg.get('plaqueCtrl') as FormControl;
-  }
-
-  get FloorCtrl(): FormControl {
-    return this.registerFg.get('floorCtrl') as FormControl;
-  }
-
-  get UnitCtrl(): FormControl {
-    return this.registerFg.get('unitCtrl') as FormControl;
-  }
-
+  
   get PasswordCtrl(): FormControl {
     return this.registerFg.get('passwordCtrl') as FormControl;
   }
@@ -85,47 +62,56 @@ export class RegisterComponent {
   get ConfirmPasswordCtrl(): FormControl {
     return this.registerFg.get('confirmPasswordCtrl') as FormControl;
   }
+  
+  // get PostCodeCtrl(): FormControl {
+  //   return this.registerFg.get('postCodeCtrl') as FormControl;
+  // }
+  
+  // get CityCtrl(): FormControl {
+  //   return this.registerFg.get('cityCtrl') as FormControl;
+  // }
+  // get CountryCtrl(): FormControl {
+  //   return this.registerFg.get('countryCtrl') as FormControl;
+  // }
+
+  // get PlaqueCtrl(): FormControl {
+  //   return this.registerFg.get('plaqueCtrl') as FormControl;
+  // }
+
+  // get FloorCtrl(): FormControl {
+  //   return this.registerFg.get('floorCtrl') as FormControl;
+  // }
+
+  // get UnitCtrl(): FormControl {
+  //   return this.registerFg.get('unitCtrl') as FormControl;
+  // }
 
   register(): void {
-    let userInput: Buildingm = {
-      firstName: this.FirstNameCtrl.value,
-      lastName: this.LastNameCtrl.value,
-      phoneNumber: this.PhoneNumberCtrl.value,
-      city: this.CityCtrl.value,
-      password: this.PasswordCtrl.value,
-      confirmPassword: this.ConfirmPasswordCtrl.value,
-      country: this.CountryCtrl.value,
-      plaque: this.PlaqueCtrl.value,
-      floor: this.FloorCtrl.value,
-      postCode: this.PostCodeCtrl.value,
-      unit: this.UnitCtrl.value
-    }
+    if(this.PasswordCtrl.value === this.ConfirmPasswordCtrl.value) {
 
-    let response$: Observable<Loggedinm | null> = this.accountService.register(userInput);
-
-    response$.subscribe({
-      next: (res) => {
-        console.log(res);
-        this.userResponse = res;
-      },
-      error: (err) => {
-        console.log(err.error);
-        this.error = err.error;
+      let userInput: RegisterBM = {
+        firstName: this.FirstNameCtrl.value,
+        lastName: this.LastNameCtrl.value,
+        phoneNumber: this.PhoneNumberCtrl.value,
+        password: this.PasswordCtrl.value,
+        confirmPassword: this.ConfirmPasswordCtrl.value
+        // city: this.CityCtrl.value,
+        // country: this.CountryCtrl.value,
+        // plaque: this.PlaqueCtrl.value,
+        // floor: this.FloorCtrl.value,
+        // postCode: this.PostCodeCtrl.value,
+        // unit: this.UnitCtrl.value
       }
-    });
+      
+      let response$: Observable<Loggedinm | null> = this.accountService.register(userInput);
+      
+      response$.subscribe({
+        next: (res) => {
+          console.log(res);
+          this.userResponse = res;
+        },
+      });
+    }
+    this.passwordMatch = false;
   }
 }
-
-//   let response$: Observable<LoggedInUser | null> = this.accountService.register(userInput);
-
-//   response$.subscribe({
-//     next: (res) => {
-//       console.log(res);
-//       this.userResponse = res;
-//     },
-//     error: (err) => {
-//       console.log(err.error);
-//       this.error = err.error;
-//     }
-//   });
-// }

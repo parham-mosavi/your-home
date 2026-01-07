@@ -81,78 +81,6 @@
                     }
                 </mat-form-field>
 
-                <mat-form-field appearance="outline">
-                    <mat-label>city</mat-label>
-                    <input type="text" [formControl]="CityCtrl" matInput>
-                    <mat-hint>Between 1 to 30 characters.</mat-hint>
-                    @if (CityCtrl.hasError('required')) {
-                    <mat-error>This field is required.</mat-error>
-                    }
-                    @else if (CityCtrl.hasError("maxlength")) {
-                    <mat-error>Min 30 characters</mat-error>
-                    }
-                </mat-form-field>
-
-                <mat-form-field appearance="outline">
-                    <mat-label>country</mat-label>
-                    <input type="text" [formControl]="CountryCtrl" matInput>
-                    <mat-hint>Between 1 to 30 characters.</mat-hint>
-                    @if (CountryCtrl.hasError('required')) {
-                    <mat-error>This field is required.</mat-error>
-                    }
-                    @else if (CountryCtrl.hasError("maxlength")) {
-                    <mat-error>Min 30 characters</mat-error>
-                    }
-                </mat-form-field>
-
-                <mat-form-field appearance="outline">
-                    <mat-label>Plaque</mat-label>
-                    <input type="text" [formControl]="PlaqueCtrl" matInput>
-                    <mat-hint>Between 1 to 30 characters.</mat-hint>
-                    @if (PlaqueCtrl.hasError('required')) {
-                    <mat-error>This field is required.</mat-error>
-                    }
-                    @else if (PlaqueCtrl.hasError("maxlength")) {
-                    <mat-error>Min 30 characters</mat-error>
-                    }
-                </mat-form-field>
-
-                <mat-form-field appearance="outline">
-                    <mat-label>Floor</mat-label>
-                    <input type="text" [formControl]="FloorCtrl" matInput>
-                    <mat-hint>Between 1 to 30 characters.</mat-hint>
-                    @if (FloorCtrl.hasError('required')) {
-                    <mat-error>This field is required.</mat-error>
-                    }
-                    @else if (FloorCtrl.hasError("maxlength")) {
-                    <mat-error>Min 30 characters</mat-error>
-                    }
-                </mat-form-field>
-
-                <mat-form-field appearance="outline">
-                    <mat-label>Unit</mat-label>
-                    <input type="text" [formControl]="UnitCtrl" matInput>
-                    <mat-hint>Between 1 to 30 characters.</mat-hint>
-                    @if (UnitCtrl.hasError('required')) {
-                    <mat-error>This field is required.</mat-error>
-                    }
-                    @else if (UnitCtrl.hasError("maxlength")) {
-                    <mat-error>Min 30 characters</mat-error>
-                    }
-                </mat-form-field>
-
-                <mat-form-field class="100" appearance="outline">
-                    <mat-label>Post code</mat-label>
-                    <input type="text" [formControl]="PostCodeCtrl" matInput>
-                    <mat-hint>Between 1 to 30 characters.</mat-hint>
-                    @if (PostCodeCtrl.hasError('required')) {
-                    <mat-error>This field is required.</mat-error>
-                    }
-                    @else if (PostCodeCtrl.hasError("maxlength")) {
-                    <mat-error>Min 30 characters</mat-error>
-                    }
-                </mat-form-field>
-
                 <!-- <button type="submit" [disabled]="isLoading" class="submit-btn">
                     {{ isLoading ? 'Creating account...' : 'Create Manager Account' }}
                 </button> -->
@@ -160,6 +88,13 @@
                 <button (click)="register()" type="submit" class="submit-btn">
                     Create Manager Account
                 </button>
+
+                @if (!passwordMatch) {
+                    <mat-error>
+                        password Do Not match
+                    </mat-error>
+                }
+
             </form>
 
             <div class="footer">

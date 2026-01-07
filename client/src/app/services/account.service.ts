@@ -5,6 +5,7 @@ import { Loggedinm } from '../models/loggedinm-model';
 import { HttpClient } from '@angular/common/http';
 import { Login } from '../models/login-model';
 import { Router } from '@angular/router';
+import { RegisterBM } from '../models/register-bm';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +17,9 @@ export class AccountService {
 
   private readonly _baseApiUrl: string = 'http://localhost:5000/api/'
 
-  register(userInput: Buildingm): Observable<Loggedinm | null> {
+  register(userInput: RegisterBM): Observable<Loggedinm | null> {
     let respons$: Observable<Loggedinm | null> =
-      this.http.post<Loggedinm>(this._baseApiUrl + 'bmaneger/register', userInput)
+      this.http.post<Loggedinm>(this._baseApiUrl + 'bmaccount/register', userInput)
         .pipe(map(res => {
           if (res) {
             this.setCurrentUser(res);
