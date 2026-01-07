@@ -2,7 +2,7 @@ namespace api.Repositoris;
 
 public class BMAccountRepository : IBMAccountRepository
 {
-        #region dependency injections
+    #region dependency injections
     private readonly IMongoCollection<BuildingManeger> _collection;
     // constructor - dependency injections
     private readonly ITokenService _tokenService;
@@ -23,7 +23,7 @@ public class BMAccountRepository : IBMAccountRepository
             return null;
         }
 
-        BuildingManeger buildingManeger = 
+        BuildingManeger buildingManeger =
             Mappers.RegisterToBuildingManeger(registerDTO);
 
         await _collection.InsertOneAsync(buildingManeger, null, cancellationToken);
@@ -52,5 +52,15 @@ public class BMAccountRepository : IBMAccountRepository
             Mappers.BuildingManegerToLoggedInManeger(user, token);
 
         return loggedInManeger;
+    }
+
+    public async Task<LoggedInManeger?> ReloadLoggedInUserAsync(string userId, string token, CancellationToken cancellationToken)
+    {
+        BuildingManeger user =
+        await _collection.Find(doc => doc.Id == userId).FirstOrDefaultAsync(cancellationToken);
+
+        if (user is null) return null;
+
+        return Mappers.BuildingManegerToLoggedInManeger(user, token);
     }
 }

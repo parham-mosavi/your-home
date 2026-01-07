@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authorization;
+
 namespace api.Controllers;
 
 public class BMAccountController(IBMAccountRepository bMAccountRepository) : BaseApiController
@@ -31,5 +33,35 @@ public class BMAccountController(IBMAccountRepository bMAccountRepository) : Bas
         }
 
         return user;
+    }
+
+    [Authorize]
+    [HttpGet]
+    public async Task<ActionResult<LoggedInManeger>> ReloadLoggedInUser(CancellationToken cancellationToken)
+    {
+        string? token = null;
+
+        bool isTokenValid = HttpContext.Request.Headers.TryGetValue
+            ("Authorization", out var authHeader);
+
+        if (isTokenValid)
+            token = authHeader.ToString().Split(' ').Last();
+        
+        Console.WriteLine(token);
+
+        if (string.IsNullOrEmpty(token))
+            return Unauthorized("Token is expired or invalid. Login again.");
+
+        string? userId = User.GetUserId();
+        
+        if (userId is null)
+        return Unauthorized("Token is expired or invalid. Login again.2");
+
+        LoggedInManeger? loggedInManeger =
+        await bMAccountRepository.ReloadLoggedInUserAsync(userId, token, cancellationToken);
+
+        if(loggedInManeger is null) return Unauthorized("user is logged out");
+
+        return loggedInManeger;
     }
 }
