@@ -23,7 +23,7 @@ export class AccountService {
         .pipe(map(res => {
           if (res) {
             this.setCurrentUser(res);
-            
+
             this.router.navigateByUrl('/homebui');
           }
           return null
@@ -47,8 +47,12 @@ export class AccountService {
 
         }))
 
-    
+
     return respons$;
+  }
+
+  relodloggedInManeger(): void {
+    this.http.get<Loggedinm>(this._baseApiUrl + 'bmaccount').subscribe()
   }
 
   logoutm(): void {

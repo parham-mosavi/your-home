@@ -30,6 +30,8 @@ export class AppComponent implements OnInit {
       let loggedinUserstr: string | null = localStorage.getItem('loggedIn');
       
       if (loggedinUserstr) {
+        this.accountService.relodloggedInManeger();
+        
         this.accountService.setCurrentUser(JSON.parse(loggedinUserstr))
       }
       
